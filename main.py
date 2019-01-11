@@ -187,14 +187,6 @@ try:
         pl["PayloadContent"][0]["IKEv2"]["OnDemandRules"] = list()
 
         if plODWifi:
-            pl["PayloadContent"][0]["IKEv2"]["OnDemandRules"].append(
-                {
-                    "Action": "Connect",
-                    "InterfaceTypeMatch": "WiFi",
-                    "URLStringProbe": "http://captive.apple.com/hotspot-detect.html",
-                }
-            )
-
             if plODWifiWL:
                 pl["PayloadContent"][0]["IKEv2"]["OnDemandRules"].append(
                     {
@@ -203,6 +195,14 @@ try:
                         "SSIDMatch": plODWifiWL,
                     }
                 )
+
+            pl["PayloadContent"][0]["IKEv2"]["OnDemandRules"].append(
+                {
+                    "Action": "Connect",
+                    "InterfaceTypeMatch": "WiFi",
+                    "URLStringProbe": "http://captive.apple.com/hotspot-detect.html",
+                }
+            )
 
         if plODCellular:
             pl["PayloadContent"][0]["IKEv2"]["OnDemandRules"].append(
@@ -217,6 +217,8 @@ try:
         plistlib.dump(pl, fp)
 
     fp.close()
+
+    print("Profile written to {0}.mobileconfig".format(plRemoteHost.replace(".", "_")))
 
 except ValueError as err:
     print(err)
