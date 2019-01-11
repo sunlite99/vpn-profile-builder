@@ -10,6 +10,7 @@ Python 3 utility to generate iOS IKEv2 VPN configuration profiles.
 
 # TO DO
 - [ ] Comment my code. I know...
+- [ ] Improve error handling, that was just lazy...
 - [ ] Add other VPN types
   - [ ] Cisco IPsec (IKEv1)
   - [ ] L2TP
