@@ -10,6 +10,12 @@ Python 3 utility to generate iOS IKEv2 VPN configuration profiles.
 
 # TO DO
 - [ ] Comment my code. I know...
-- [ ] Add other VPN types.
-- [ ] Certificate authentication.
+- [ ] Add other VPN types
+  - [ ] Cisco IPsec (IKEv1)
+  - [ ] L2TP
+- [ ] Certificate authentication
 - [ ] Menu?
+
+# Notes
+
+- PPTP is not happening. Ever. Don't even ask. It's horrendously insecure, and if you're still using it, you have bigger problems.
