@@ -53,10 +53,10 @@ def getdh(msg):
     print()
     n = 0
 
-    for key, _ in defs.DH_GROUPS.items():
+    for key, value in defs.DH_GROUPS.items():
         n += 1
         safe = (" (UNSAFE)", "")[defs.SAFE_DH_GROUPS[key]]
-        print("{0}: {1}{2}".format(n, key, safe))
+        print("{0}: {1} (group {2}){3}".format(n, key, value, safe))
 
     while True:
         try:
@@ -141,6 +141,9 @@ try:
 
     plUUID = genuuid()
     plContentUUID = genuuid()
+    plIDBase = plRemoteHost.split(".")
+    plIDBase.reverse()
+    plIDBase = ".".join(map(str, plIDBase)) + ".vpn.profile."
 
     pl = {
         "PayloadContent": [
@@ -176,7 +179,7 @@ try:
             }
         ],
         "PayloadDisplayName": plDisplayName,
-        "PayloadIdentifier": "donut.local." + plUUID,
+        "PayloadIdentifier": plIDBase + plUUID,
         "PayloadType": "Configuration",
         "PayloadUUID": plUUID,
         "PayloadVersion": 1,
