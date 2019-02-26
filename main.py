@@ -79,17 +79,15 @@ def genuuid():
 
 
 try:
-    plDisplayName = input("Profile Display Name: ")
-
-    if not plDisplayName:
-        raise ValueError("Display name is required!")
-
-    plVPNName = input("VPN Display Name [" + plDisplayName + "]: ") or plDisplayName
     plRemoteHost = input("Server IP or FQDN: ")
 
     if not plRemoteHost:
         raise ValueError("Remote host is required!")
 
+    plVPNName = input("VPN Entry Name [" + plRemoteHost + " VPN]: ") or (plRemoteHost + " VPN")
+    
+    plDisplayName = input("Profile Entry Name ["+ plVPNName  +" Profile]: ") or (plVPNName + " Profile")
+    
     plRemoteID = input("Remote ID [" + plRemoteHost + "]: ") or plRemoteHost
     plLocalID = input("Local ID []: ") or None
 
