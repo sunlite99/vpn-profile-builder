@@ -25,7 +25,6 @@ def getcipher(msg):
             return list(defs.CIPHERS)[
                 int(input("Select " + msg + " encryption algorithm: ")) - 1
             ]
-            break
         except ValueError:
             print("Invalid selection.")
 
@@ -44,7 +43,6 @@ def getdigest(msg):
             return list(defs.DIGESTS)[
                 int(input("Select " + msg + " digest algorithm: ")) - 1
             ]
-            break
         except ValueError:
             print("Invalid selection.")
 
@@ -63,7 +61,6 @@ def getdh(msg):
             return defs.DH_GROUPS[
                 list(defs.DH_GROUPS)[int(input("Select " + msg + " DH group: ")) - 1]
             ]
-            break
         except ValueError:
             print("Invalid selection.")
 
@@ -84,10 +81,14 @@ try:
     if not plRemoteHost:
         raise ValueError("Remote host is required!")
 
-    plVPNName = input("VPN Entry Name [" + plRemoteHost + " VPN]: ") or (plRemoteHost + " VPN")
-    
-    plDisplayName = input("Profile Entry Name ["+ plVPNName  +" Profile]: ") or (plVPNName + " Profile")
-    
+    plVPNName = input("VPN Entry Name [" + plRemoteHost + " VPN]: ") or (
+        plRemoteHost + " VPN"
+    )
+
+    plDisplayName = input("Profile Entry Name [" + plVPNName + " Profile]: ") or (
+        plVPNName + " Profile"
+    )
+
     plRemoteID = input("Remote ID [" + plRemoteHost + "]: ") or plRemoteHost
     plLocalID = input("Local ID []: ") or None
 
